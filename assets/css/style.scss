@@ -1,0 +1,32 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+#header_wrap, #footer_wrap {
+    background: #555555;
+}
+
+#project_tagline, #forkme_banner {
+    display: none;
+}
+
+#github_ribbon {
+  display: block;
+  position: absolute;
+  top:0;
+  right: 0px;
+  z-index: 10;
+  margin: 0;
+  padding: 10px 50px 10px 10px;
+}
+
+#github_ribbon img {
+  box-shadow: 0 0 0px  ;
+  -webkit-box-shadow: 0 0 0px  ;
+  -moz-box-shadow: 0 0 0px  ;
+  -o-box-shadow: 0 0 0px  ;
+  -ms-box-shadow: 0 0 0px  ;    
+  margin: 0;
+  padding: 0;
+}

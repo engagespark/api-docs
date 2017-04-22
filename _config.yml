@@ -2,7 +2,7 @@ theme: jekyll-theme-slate
 
 # Theme variables
 # See https://github.com/pages-themes/slate
-title: engageSPARK API
+title: engageSPARK SMS and Voice API
 description: Learn how to easily automate Voice Calls and 2-Way SMS
 # "true" or "false" to indicate whether to provide a download URL
 show_downloads: false
