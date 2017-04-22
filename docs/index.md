@@ -1,4 +1,6 @@
-This page documents our existing, public [engageSPARK](https://www.engagespark.com) APIs.
+This page documents the [engageSPARK](https://www.engagespark.com) API.
+You can use them to automate Voice and 2-way SMS even further.
+
 If you have any questions, please don't hesitate [to reach out](https://www.engagespark.com/contact-us/).
 
 * TOC
@@ -16,7 +18,7 @@ call to the applicants phone.
 
 On subscription, the SMS or call will be dispatched immediately.
 
-For more information, see also our [support page on APIs](https://www.engagespark.com/support/how-can-i-use-your-api/).
+For more information and other ways to subscribe, see the [subscription on the Contacts page](https://www.engagespark.com/support/subscribe-add-contacts-existing-campaign/) and the list of [APIs and other integrations](https://www.engagespark.com/support/how-can-i-use-your-api/).
 
 How it works
 ------------
