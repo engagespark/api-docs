@@ -3,7 +3,7 @@
 
 @import "{{ site.theme }}";
 
-#header_wrap, #footer_wrap {
+body, #header_wrap, #footer_wrap {
     background: #555555;
 }
 
