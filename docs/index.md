@@ -246,6 +246,70 @@ We would try to find an existing contact with that phonenumber and, if none exis
 curl -H 'Content-Type: application/json' -H 'Authorization: Token thisismyapitoken123' -d '{"fullPhoneNumber": "63123456789"}' https://start.engagespark.com/api/v1/engagements/1234/contacts/?try_using_existing=newest
 ```
 
+Updating contacts via Subscription API
+--------------------------------------
+Now you can update contact details by populating the fields:
+
+With contact ID:
+```json
+{
+  "contacts": [{
+    "id": 17569341,
+    "firstName": "Rick",
+  }, {
+    "id": 17569342,
+    "firstName": "Morty",
+  }, {
+    "id": 17569343,
+    "customFields": {
+      "1": "Morty's elder sister"
+    }
+  }]
+}
+```
+
+Or using the `try_using_newest=newest` request:
+
+```json
+[{
+    "firstName": "Juan",
+    "lastName": "Dela Cruz",
+    "fullPhoneNumber": "639438249629",
+    "organizationId": 853,
+    "language": "English",
+    "groups": [321],
+    "customFields": {
+      "1": "None"
+    }
+}]
+```
+
+**Custom fields** are mapped as `{"Custom Field ID": "New Value"}` which you can find them via url:
+
+ `api/v1/customfields`
+
+Response when getting customfields:
+
+```json
+{
+    "data": [{
+        "organizationId": 1,
+        "fieldType": "text",
+        "id": 1,
+        "name": "Link"
+    }, {
+        "organizationId": 1,
+        "fieldType": "text",
+        "id": 2,
+        "name": "Age"
+    }]
+}
+```
+
+Note:
+- *Passing in non existing custom field ids are disregarded. Your request will be successfully processed but no `customField` created*
+- *You can update one or all contact fields*
+
 # Authentication
 
 An **API Key** is needed to authenticate yourself. Find it in [your profile](https://start.engagespark.com/profile)
