@@ -246,6 +246,54 @@ We would try to find an existing contact with that phonenumber and, if none exis
 curl -H 'Content-Type: application/json' -H 'Authorization: Token thisismyapitoken123' -d '{"fullPhoneNumber": "63123456789"}' https://start.engagespark.com/api/v1/engagements/1234/contacts/?try_using_existing=newest
 ```
 
+# Contacts API
+
+An easy way to manage your contacts. You can use this api to:
+
+* Creating a new contact
+* Updating a contact
+* Deleting a contact
+* Bulk-add of contacts
+
+## Creating a new Contact
+
+```sh
+curl -X "POST" "https://start.engagespark.com/api/v1/contacts" \
+    -H "Authorization: Token {API_KEY}" \
+    -H "Content-type: application/json" \
+
+    {"firstName":"","lastName":"","language":"","customFields":{"7584":"","7597":"","7754":""},"phoneNumber":"639166752791","fullPhoneNumber":"639166752791"}
+
+```
+
+## Updating a contact
+
+
+```
+https://test.engagespark.net/api/v1/contacts/20947107
+
+{"fullPhoneNumber":"639166752791","firstName":"Test2","organizationId":1020,"lastName":"","id":20947107,"deleted":"","carrierId":949,"phoneNumber":"9166752791","groups":[],"createdDate":"2017-10-27T03:36:30-06:00","dialingCode":"63","customFields":{"7584":"","7597":"","7754":""},"email":"","selected":0}
+Name
+
+```
+
+## Deleting a contact
+
+## Bulk-add of contacts
+
+
+## Custom Fields
+
+```
+https://test.engagespark.net/api/v1/customfields
+{"data": [{"organizationId": 1020, "fieldType": "text", "id": 7597, "name": "Fast"}, {"organizationId": 1020, "fieldType": "text", "id": 7584, "name": "Games"}, {"organizationId": 1020, "fieldType": "text", "id": 7754, "name": "GAMES"}]}
+```
+
+## Groups
+
+Updating of groups will be here.
+
+
 # Authentication
 
 An **API Key** is needed to authenticate yourself. Find it in [your profile](https://start.engagespark.com/profile)
