@@ -319,4 +319,4 @@ e.g. `Token 8eddfd73d459b03505ac1497feea87d1b8c84cbd`
 
 Phone numbers in the API need to have an **international dialing code**.
 
-For example, for a number from the Philippines (with the dialing code `6321234567` would be correct, whereas `12345678` would be missing the dialing code. If you are not sure about the dialing code of the country you want to send calls or SMS to, check this [Wikipedia article on dialing codes](https://en.wikipedia.org/wiki/List_of_country_calling_codes#Ordered_by_code).
+For example, for a number from the Philippines (with the dialing code `63`) `6321234567` would be correct, whereas `12345678` would be missing the dialing code. If you are not sure about the dialing code of the country you want to send calls or SMS to, check this [Wikipedia article on dialing codes](https://en.wikipedia.org/wiki/List_of_country_calling_codes#Ordered_by_code).
