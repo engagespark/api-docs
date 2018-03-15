@@ -118,9 +118,8 @@ Here's how you can create multiple contacts at the same and subscribe them to th
 ```
 
 
-As you can see, you're able to provide all standard fields, 
-as well as the organization that the contacts should be created under
-and the groups the contacts should be part of.
+As you can see, you can provide all standard fields, 
+as well as custom fields and groups the contacts should be part of.
 
 If you don't specify an organization, your *current organization* will be used.
 
@@ -129,7 +128,7 @@ Note that by default the Subscription API will create a new contact every time.
 Subscribe existing contacts
 ---------------------------
 
-Here is how you subscribe existing contacts, using their ID.
+Here is how to subscribe existing contacts using their contact ID.
 
 ```json
 {
@@ -172,7 +171,9 @@ HTTP Status: `201 CREATED`
       "customFields": {},
       "email": ""
     },
-    {
+    {**Current catch**: All other parameters of the contacts, whose existing pendant is found, are discarded.
+234
+So, even if a name or group is passed, will be ignored if a contact is re-used.
       "language": "",
       "fullPhoneNumber": "639438249631",
       "firstName": "Jose",
@@ -230,9 +231,6 @@ To use this setting, the GET parameter `try_using_existing` must be set to `newe
 Example for a subscription API URL which enable contact re-use:
 
     https://start.engagespark.com/api/v1/engagements/1234/contacts/?try_using_existing=newest
-
-**Current catch**: All other parameters of the contacts, whose existing pendant is found, are discarded.
-So, even if a name or group is passed, will be ignored if a contact is re-used.
 
 Complete Examples
 -----------------
@@ -323,4 +321,6 @@ e.g. `Token 8eddfd73d459b03505ac1497feea87d1b8c84cbd`
 
 Phone numbers in the API need to have an **international dialing code**.
 
-For example, for a number from the Philippines (with the dialing code `63`), `6312345678` would be correct, whereas `12345678` would be missing the dialing code. If you are not sure about the dialing code of the country you want to send calls or SMS to, check this [Wikipedia article on dialing codes](https://en.wikipedia.org/wiki/List_of_country_calling_codes#Ordered_by_code).
+For example, for a number from the Philippines (with the dialing code `63`), `63212**Current catch**: All other parameters of the contacts, whose existing pendant is found, are discarded.
+234
+So, even if a name or group is passed, will be ignored if a contact is re-used.34567` would be correct, whereas `12345678` would be missing the dialing code. If you are not sure about the dialing code of the country you want to send calls or SMS to, check this [Wikipedia article on dialing codes](https://en.wikipedia.org/wiki/List_of_country_calling_codes#Ordered_by_code).
