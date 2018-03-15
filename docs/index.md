@@ -1,7 +1,7 @@
 This page documents the [engageSPARK](https://www.engagespark.com) API.
 You can use them to automate Voice and 2-way SMS even further.
 
-If you have any questions, please don't hesitate [to reach out](https://www.engagespark.com/contact-us/).
+If you have any questions, please don't hesitate to [reach out](https://www.engagespark.com/contact-us/).
 
 * TOC
 {:toc}
@@ -18,7 +18,7 @@ call to the applicants phone.
 
 On subscription, the SMS or call will be dispatched immediately.
 
-For more information and other ways to subscribe, see the [subscription on the Contacts page](https://www.engagespark.com/support/subscribe-add-contacts-existing-campaign/) and the list of [APIs and other integrations](https://www.engagespark.com/support/how-can-i-use-your-api/).
+For more information and other ways to subscribe, check out [how to subscribe contacts via the Contacts page](https://www.engagespark.com/support/subscribe-add-contacts-existing-campaign/) and the list of [APIs and other integrations](https://www.engagespark.com/support/how-can-i-use-your-api/) available.
 
 How it works
 ------------
@@ -33,15 +33,14 @@ Prerequisites
 -------------
 
 1. First, you need **a running Engagement** to which you want to subscribe new contacts.
-   Engagements are running, 
-   if they show up in your [Engagement list](https://start.engagespark.com/engagements)
+   Engagements are running, if they show up in your [Engagement list](https://start.engagespark.com/engagements)
    and have a green status of `RUNNING`, as in the following image:
   
-    ![Shows the RUNNING status of a SMS Poll.]({{ site.baseurl }}/images/subscription-running-engagement.png)
+    [Shows the RUNNING status of a SMS Poll.]({{ site.baseurl }}/images/subscription-running-engagement.png)
   
     If you don't have a running Engagement yet, please [create it here](https://start.engagespark.com/engagement/create).
   
-1. You need to create the **Subscription URL**, see below.
+1. You need to construct the **Subscription URL**; see the url structure below.
 
 1. As with all APIs, you need your **API key**, see [Authentication](#authentication) below.
 
@@ -66,7 +65,7 @@ The generic URL looks like this:
 HTTP Method & Headers
 ---------------------
 
-The HTTP method is `POST`, and you'll need to set the following HTTP Headers:
+The HTTP method is `POST`, and you need to set the following HTTP Headers:
 
     Authorization: Token {API_KEY}
     Content-type: application/json
@@ -238,7 +237,7 @@ So, even if a name or group is passed, will be ignored if a contact is re-used.
 Complete Examples
 -----------------
 
-Using the command-line tool curl, here's how you would subscribe the phone number
+Using the command-line tool `curl`, here's how you would subscribe the phone number
 `63123456789` to the Engagement with ID `1234` and the API token `thisismyapitoken123`.
 We would try to find an existing contact with that phonenumber and, if none exists, create a new one.
 
