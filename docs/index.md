@@ -1,7 +1,7 @@
 This page documents the [engageSPARK](https://www.engagespark.com) API.
 You can use them to automate Voice and 2-way SMS even further.
 
-If you have any questions, please don't hesitate [to reach out](https://www.engagespark.com/contact-us/).
+If you have any questions, please don't hesitate to [reach out](https://www.engagespark.com/contact-us/).
 
 * TOC
 {:toc}
@@ -18,7 +18,7 @@ call to the applicants phone.
 
 On subscription, the SMS or call will be dispatched immediately.
 
-For more information and other ways to subscribe, see the [subscription on the Contacts page](https://www.engagespark.com/support/subscribe-add-contacts-existing-campaign/) and the list of [APIs and other integrations](https://www.engagespark.com/support/how-can-i-use-your-api/).
+For more information and other ways to subscribe, check out [how to subscribe contacts via the Contacts page](https://www.engagespark.com/support/subscribe-add-contacts-existing-campaign/) and the list of [APIs and other integrations](https://www.engagespark.com/support/how-can-i-use-your-api/) available.
 
 How it works
 ------------
@@ -33,15 +33,14 @@ Prerequisites
 -------------
 
 1. First, you need **a running Engagement** to which you want to subscribe new contacts.
-   Engagements are running, 
-   if they show up in your [Engagement list](https://start.engagespark.com/engagements)
+   Engagements are running, if they show up in your [Engagement list](https://start.engagespark.com/engagements)
    and have a green status of `RUNNING`, as in the following image:
   
-    ![Shows the RUNNING status of a SMS Poll.]({{ site.baseurl }}/images/subscription-running-engagement.png)
+    [Shows the RUNNING status of a SMS Poll.]({{ site.baseurl }}/images/subscription-running-engagement.png)
   
     If you don't have a running Engagement yet, please [create it here](https://start.engagespark.com/engagement/create).
   
-1. You need to create the **Subscription URL**, see below.
+1. You need to construct the **Subscription URL**; see the url structure below.
 
 1. As with all APIs, you need your **API key**, see [Authentication](#authentication) below.
 
@@ -66,7 +65,7 @@ The generic URL looks like this:
 HTTP Method & Headers
 ---------------------
 
-The HTTP method is `POST`, and you'll need to set the following HTTP Headers:
+The HTTP method is `POST`, and you need to set the following HTTP Headers:
 
     Authorization: Token {API_KEY}
     Content-type: application/json
@@ -119,9 +118,8 @@ Here's how you can create multiple contacts at the same and subscribe them to th
 ```
 
 
-As you can see, you're able to provide all standard fields, 
-as well as the organization that the contacts should be created under
-and the groups the contacts should be part of.
+As you can see, you can provide all standard fields, 
+as well as custom fields and groups the contacts should be part of.
 
 If you don't specify an organization, your *current organization* will be used.
 
@@ -130,7 +128,7 @@ Note that by default the Subscription API will create a new contact every time.
 Subscribe existing contacts
 ---------------------------
 
-Here is how you subscribe existing contacts, using their ID.
+Here is how to subscribe existing contacts using their contact ID.
 
 ```json
 {
@@ -232,19 +230,80 @@ Example for a subscription API URL which enable contact re-use:
 
     https://start.engagespark.com/api/v1/engagements/1234/contacts/?try_using_existing=newest
 
-**Current catch**: All other parameters of the contacts, whose existing pendant is found, are discarded.
-So, even if a name or group is passed, will be ignored if a contact is re-used.
-
 Complete Examples
 -----------------
 
-Using the command-line tool curl, here's how you would subscribe the phone number
+Using the command-line tool `curl`, here's how you would subscribe the phone number
 `63123456789` to the Engagement with ID `1234` and the API token `thisismyapitoken123`.
 We would try to find an existing contact with that phonenumber and, if none exists, create a new one.
 
 ```shell
 curl -H 'Content-Type: application/json' -H 'Authorization: Token thisismyapitoken123' -d '{"fullPhoneNumber": "63123456789"}' https://start.engagespark.com/api/v1/engagements/1234/contacts/?try_using_existing=newest
 ```
+
+Updating contacts via Subscription API
+--------------------------------------
+Now you can update contact details by populating the fields:
+
+With contact ID:
+```json
+{
+  "contacts": [{
+    "id": 17569341,
+    "firstName": "Juan",
+  }, {
+    "id": 17569342,
+    "firstName": "Juanita",
+  }, {
+    "id": 17569343,
+    "customFields": {
+      "1": "Third"
+    }
+  }]
+}
+```
+
+Or using the `try_using_newest=newest` request:
+
+```json
+[{
+    "firstName": "Juan",
+    "lastName": "Dela Cruz",
+    "fullPhoneNumber": "639438249629",
+    "organizationId": 853,
+    "language": "English",
+    "groups": [321],
+    "customFields": {
+      "1": "None"
+    }
+}]
+```
+
+**Custom fields** are mapped as `{"Custom Field ID": "New Value"}` which you can find them via url:
+
+ `api/v1/customfields`
+
+Response when getting customfields:
+
+```json
+{
+    "data": [{
+        "organizationId": 1,
+        "fieldType": "text",
+        "id": 1,
+        "name": "Link"
+    }, {
+        "organizationId": 1,
+        "fieldType": "text",
+        "id": 2,
+        "name": "Age"
+    }]
+}
+```
+
+Note:
+- *Passing in non existing custom field ids are disregarded. Your request will be successfully processed but no `customField` created*
+- *You can update one or all contact fields*
 
 # Authentication
 
@@ -260,4 +319,4 @@ e.g. `Token 8eddfd73d459b03505ac1497feea87d1b8c84cbd`
 
 Phone numbers in the API need to have an **international dialing code**.
 
-For example, for a number from the Philippines (with the dialing code `63`), `6312345678` would be correct, whereas `12345678` would be missing the dialing code. If you are not sure about the dialing code of the country you want to send calls or SMS to, check this [Wikipedia article on dialing codes](https://en.wikipedia.org/wiki/List_of_country_calling_codes#Ordered_by_code).
+For example, for a number from the Philippines (with the dialing code `63`) `6321234567` would be correct, whereas `12345678` would be missing the dialing code. If you are not sure about the dialing code of the country you want to send calls or SMS to, check this [Wikipedia article on dialing codes](https://en.wikipedia.org/wiki/List_of_country_calling_codes#Ordered_by_code).
